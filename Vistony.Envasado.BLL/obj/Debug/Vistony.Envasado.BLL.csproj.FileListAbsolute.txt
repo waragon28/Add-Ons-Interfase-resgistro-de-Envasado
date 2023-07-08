@@ -38,3 +38,21 @@ D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.BLL\bin\D
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.BLL\bin\Debug\RestSharp.xml
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.ServiceLayer.pdb
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.BLL.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.BLL.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.BO.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.DAL.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\RestSharp.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.ServiceLayer.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Newtonsoft.Json.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.BO.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Vistony.AddonName.DAL.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\RestSharp.xml
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.ServiceLayer.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\bin\Debug\Forxap.Framework.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\obj\Debug\Vistony.Envasado.BLL.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\obj\Debug\Vistony.AddonName.BLL.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.BLL\obj\Debug\Vistony.AddonName.BLL.pdb

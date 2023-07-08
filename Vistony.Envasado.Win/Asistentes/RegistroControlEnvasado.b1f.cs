@@ -215,24 +215,19 @@ namespace Vistony.AddonName.Win.Asistentes
 
             EditText61.Value = DocEntryOT;
             EditText62.Value = DocEntryOP;
-
-            //
-            //EditText60.Item.Enabled = false;
-            //EditText62.Item.Enabled = false;
+            
 
             EditText57.Value = "2";//Convert.ToString(Correlativo);
-
-
+            
 
             if (FechaCreacionOP != "30/12/1899 00:00:00")
             {
                 EditText0.Value = Convert.ToDateTime(FechaCreacionOP).ToString("yyyyMMdd");
             }
-            string a =  HoraOPt.Substring(0,2);
-            string b =  HoraOPt.Substring(2,2);
+
             try
             {
-                EditText1.Value = HoraOPt.Substring(0, 2) + ":" + HoraOPt.Substring(2, 2);
+                EditText1.Value = HoraOPt;
 
                 EditText6.Value = HoraAprobadaMuestraFinal;//.Substring(0, 2) + ":" + HoraAprobadaMuestraFinal.Substring(2, 2);
 
@@ -332,6 +327,9 @@ namespace Vistony.AddonName.Win.Asistentes
             //source.InsertRecord(source.Size);
             //source.Offset = source.Size - 1;
 
+
+           // oForm.SetEditText("Item_9",udt.GetString("Código", 0),true);
+
             for (int oRows = 0; oRows < udt.Rows.Count; oRows++)
             {
                 SAPbouiCOM.DBDataSource oDatasource = oForm.GetDBDataSource("@VIS_OWOR_ENV_D");
@@ -352,6 +350,8 @@ namespace Vistony.AddonName.Win.Asistentes
                 oDatasource.SetValue("U_VIS_DEV_EV", oRows, udt.GetString("Devolución", oRows));
                 oDatasource.SetValue("U_VIS_MERMA_EV", oRows, udt.GetString("Merma", oRows));
             }
+
+
             oMatrix.Columns.Item("Col_0").Editable = false;
             oMatrix.Columns.Item("Col_1").Editable = false;
             oMatrix.Columns.Item("Col_2").Editable = false;
@@ -467,8 +467,10 @@ namespace Vistony.AddonName.Win.Asistentes
             EditText54.Value = U_VIS_PRES_P3;
             EditText55.Value = U_VIS_CANTIDAD_P3;
             EditText56.Value = U_VIS_COD_REG_BAL_P3;
-            
-            if (FechaCreacionOP != "30/12/1899 00:00:00")
+            OptionBtn1.GroupWith("Item_2");
+            OptionBtn0.Selected=true;
+
+           if (FechaCreacionOP != "30/12/1899 00:00:00")
             {
                 EditText0.Value = Convert.ToDateTime(FechaCreacionOP).ToString("yyyyMMdd");
             }
@@ -484,48 +486,34 @@ namespace Vistony.AddonName.Win.Asistentes
             {
                 EditText29.Value = Convert.ToDateTime(U_VIS_FECHA_P2).ToString("yyyyMMdd");
             }
-            if (HoraOPt==null)
-            {
-                HoraOPt = "";
-            }
-            if (HoraAprobadaMuestraFinal == null)
-            {
-                HoraAprobadaMuestraFinal = "";
-            }
-            if (HoraEntrMuestraFinal == null)
-            {
-                HoraEntrMuestraFinal = "";
-            }
-            if (Hora_Entrega_Linea == null)
-            {
-                Hora_Entrega_Linea = "";
-            }
-            if (Hora_Aprobada_Linea == null)
-            {
-                Hora_Aprobada_Linea = "";
-            }
 
-            if (HoraOPt != "0" && HoraOPt.ToString()?.Length == 4)
-            {
-                EditText1.Value = HoraOPt.Substring(0, 2) + ":" + HoraOPt.Substring(2, 2);
-            }
-            if (HoraAprobadaMuestraFinal != "0" && HoraAprobadaMuestraFinal.Length == 4)
-            {
-                EditText6.Value = HoraAprobadaMuestraFinal.Substring(0, 2) + ":" + HoraAprobadaMuestraFinal.Substring(2, 2);
-            }
-            if (HoraEntrMuestraFinal != "0" && HoraEntrMuestraFinal.Length == 4)
-            {
-                EditText7.Value = HoraEntrMuestraFinal.Substring(0, 2) + ":" + HoraEntrMuestraFinal.Substring(2, 2);
-            }
-            if (Hora_Entrega_Linea != "0" && Hora_Entrega_Linea.Length == 4)
-            {
-                EditText4.Value = Hora_Entrega_Linea.Substring(0, 2) + ":" + Hora_Entrega_Linea.Substring(2, 2);
-            }
-            if (Hora_Aprobada_Linea != "0" && Hora_Aprobada_Linea.Length == 4)
-            {
-                EditText5.Value = Hora_Aprobada_Linea.Substring(0, 2) + ":" + Hora_Aprobada_Linea.Substring(2, 2);
-            }
-
+             if (HoraOPt==null)
+             {
+                 HoraOPt = "";
+             }
+             if (HoraAprobadaMuestraFinal == null)
+             {
+                 HoraAprobadaMuestraFinal = "";
+             }
+             if (HoraEntrMuestraFinal == null)
+             {
+                 HoraEntrMuestraFinal = "";
+             }
+             if (Hora_Entrega_Linea == null)
+             {
+                 Hora_Entrega_Linea = "";
+             }
+             if (Hora_Aprobada_Linea == null)
+             {
+                 Hora_Aprobada_Linea = "";
+             }
+             
+                EditText1.Value = HoraOPt;
+                EditText6.Value = HoraAprobadaMuestraFinal;
+                EditText7.Value = HoraEntrMuestraFinal;
+                EditText4.Value = Hora_Entrega_Linea;
+                EditText5.Value = Hora_Aprobada_Linea;
+           
 
             if (EditText7.Value != "")
             {
@@ -578,6 +566,9 @@ namespace Vistony.AddonName.Win.Asistentes
             var colItems = udt.Columns;
 
             oColumns = oMatrix.Columns;
+
+            oForm.SetEditText("Item_9", udt.GetString("U_VIS_NOM_REP", 0), true);
+            oForm.SetEditText("Item_19", udt.GetString("U_VIS_PRE_LIMP2", 0), true);
 
             oMatrix.Columns.Item("Col_0").DataBind.SetBound(true, "@VIS_OWOR_ENV_D", "U_VIS_COD_ENV");
             oMatrix.Columns.Item("Col_1").DataBind.SetBound(true, "@VIS_OWOR_ENV_D", "U_VIS_DESC_ENV");

@@ -46,3 +46,24 @@ D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.Win\obj\D
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.Envasado.Win.csproj.GenerateResource.Cache
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.AddonName.Win.exe
 D:\Desarrollo\Add-Ons Interfase resgistro de Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.AddonName.Win.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.Win.exe.config
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.Win.xml
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.AddonName.Win.exe
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.AddonName.Win.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.Win.exe
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.Win.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\RestSharp.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\SAPBusinessOneSDK.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.BLL.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.BO.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.DAL.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.BLL.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.BO.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Vistony.AddonName.DAL.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\RestSharp.xml
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.Envasado.Win.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.AddonName.Win.Properties.Resources.resources
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\obj\Debug\Vistony.Envasado.Win.csproj.GenerateResource.Cache
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Forxap.Framework.dll
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Forxap.Framework.pdb
+D:\Desarrollo\Add-Ons-Interfase-resgistro-de-Envasado\Vistony.Envasado.Win\bin\Debug\Newtonsoft.Json.dll

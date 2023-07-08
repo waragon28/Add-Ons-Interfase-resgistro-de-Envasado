@@ -57,10 +57,6 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Forxap.Framework, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Framework\DLL\Forxap.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="Forxap.Framework.ServiceLayer, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Framework\DLL\Forxap.Framework.ServiceLayer.dll</HintPath>
@@ -192,6 +188,10 @@
     <Content Include="bin\Debug\Images\Wizard.JPG" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Forxap.Framework\Forxap.Framework.csproj">
+      <Project>{b4fcb577-e8ea-4c31-bab9-2747d6ed2cf7}</Project>
+      <Name>Forxap.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vistony.Envasado.BLL\Vistony.Envasado.BLL.csproj">
       <Project>{62869991-12b4-49f2-9a78-69a3f385e017}</Project>
       <Name>Vistony.Envasado.BLL</Name>

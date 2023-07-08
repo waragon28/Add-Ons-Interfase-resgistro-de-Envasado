@@ -149,7 +149,7 @@ namespace Vistony.AddonName.Win.Asistentes
         public void ObtenerVIS_OWOR_ENV(string DocNumOP, Recordset recordset)
         {
             string StrHANA = string.Empty;
-            StrHANA = string.Format("SELECT * FROM \"@VIS_OWOR_ENV_C\" where \"U_VIS_OT_ENVASADO\" = '{0}' ", DocNumOP);
+            StrHANA = string.Format("SELECT * FROM \"@VIS_OWOR_ENV_C\" where \"U_VIS_OT_MEZCLA\" = '{0}' ", DocNumOP);
 
             recordset.DoQuery(StrHANA);
             Code_VIS_OWOR_ENV = recordset.Fields.Item("DocEntry").Value.ToString();
@@ -160,7 +160,7 @@ namespace Vistony.AddonName.Win.Asistentes
         {
             string StrHANA = string.Empty;
             StrHANA = string.Format("SELECT * " +
-                                    "FROM \"@VIS_OWOR_ENV_C\" where \"U_VIS_OT_ENVASADO\" = '{0}' ", oForm.GetString("18"));
+                                    "FROM \"@VIS_OWOR_ENV_C\" where \"U_VIS_OT_MEZCLA\" = '{0}' ", oForm.GetString("18"));
 
             recordset.DoQuery(StrHANA);
             Correlativo = Convert.ToInt32(recordset.Fields.Item("DocNum").Value.ToString());
@@ -194,7 +194,7 @@ namespace Vistony.AddonName.Win.Asistentes
             U_VIS_CANTIDAD_P2 = recordset.Fields.Item("U_VIS_CANTIDAD_P2").Value.ToString();
             U_VIS_COD_REG_BAL_P2 = recordset.Fields.Item("U_VIS_COD_REG_BAL_P2").Value.ToString();
 
-            U_VIS_ENV_P3 = recordset.Fields.Item("U_VIS_ENV_P3").Value.ToString();
+           /* U_VIS_ENV_P3 = recordset.Fields.Item("U_VIS_ENV_P3").Value.ToString();
             U_VIS_ETI_P3 = recordset.Fields.Item("U_VIS_ETI_P3").Value.ToString();
             U_VIS_ENC1_P3 = recordset.Fields.Item("U_VIS_ENC1_P3").Value.ToString();
             U_VIS_ENC2_P3 = recordset.Fields.Item("U_VIS_ENC2_P3").Value.ToString();
@@ -211,7 +211,7 @@ namespace Vistony.AddonName.Win.Asistentes
 
             U_VIS_PRE_LIMP1 = recordset.Fields.Item("U_VIS_PRE_LIMP1").Value.ToString();
             U_VIS_PRE_LIMP2 = recordset.Fields.Item("U_VIS_PRE_LIMP2").Value.ToString();
-            U_VIS_PRE_LIMP3 = recordset.Fields.Item("U_VIS_PRE_LIMP3").Value.ToString();
+            U_VIS_PRE_LIMP3 = recordset.Fields.Item("U_VIS_PRE_LIMP3").Value.ToString();*/
         }
         public Orden_Fabricacion()
         {
@@ -241,12 +241,12 @@ namespace Vistony.AddonName.Win.Asistentes
             }
            else if (BusinessObjectInfo.EventType == SAPbouiCOM.BoEventTypes.et_FORM_DATA_UPDATE)
             {
-                string GetDepa = string.Format("SELECT \"Department\" FROM \"OUSR\" WHERE \"USER_CODE\" = '{0}'", 
-                    usuarioLogin);
-                Recordset recordsetDep = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+                string GetDepa = string.Format("SELECT \"Department\" FROM \"OUSR\" WHERE \"USER_CODE\" = '{0}'", usuarioLogin);
+               Recordset recordsetDep = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
                 recordsetDep.DoQuery(GetDepa);
 
-                //19
+                //
+                
                 if (recordsetDep.Fields.Item("Department").Value.ToString()== "19")
                 {
                     if (TipoOF == "EN" || TipoOF == "MZ")
@@ -265,7 +265,7 @@ namespace Vistony.AddonName.Win.Asistentes
                         string U_VIS_Hora_Entrega_M1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Hora_Entrega_M1", 0);
                         string U_VIS_Fecha_Aproba_Lab = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Fecha_Aproba_Lab", 0);
                         string U_VIS_Hora_Aproba_Lab = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Hora_Aproba_Lab", 0);
-                        double U_VIS_Density =  Convert.ToDouble(oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Density", 0));
+                        double U_VIS_Density =  Convert.ToDouble(oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Densidad2", 0));
 
                         string Texto = "";
                         string Aprobacion_1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Sample1", 0);
@@ -281,141 +281,36 @@ namespace Vistony.AddonName.Win.Asistentes
 
                         string Hora_Apro_M1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Hora_Aproba_Lab", 0);
                         string Fecha_Apro_M1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Fecha_Aproba_Lab", 0);
-                        double Densidad = Convert.ToDouble(oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Density", 0));
+                        double Densidad = Convert.ToDouble(oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Densidad2", 0));
 
-
-                        if (TipoOF == "EN")
-                        {
-                            Query1 = string.Format("CALL P_VIS_ADD_ENV_GET_OF('{0}','{1}')", TipoOF, NumEnv);
-                        }
-
+                        
                         if (TipoOF == "MZ")
                         {
                             Query1 = string.Format("CALL P_VIS_ADD_ENV_GET_OF('{0}','{1}')", TipoOF, DocNumOF );
-                        }
+                  
                         SAPbouiCOM.DataTable oDT = oForm.GetDataTable("DT_5");
                         oDT.ExecuteQuery(Query1);
-                        for (int row = 0; row < oDT.Rows.Count; row++)
+                       for (int row = 0; row < 1; row++)
                         {
-                            if (oDT.Rows.Count==1)
-                            {
-                                StrHANA = string.Format("CALL P_VIS_OBTENERDATOS_USER('{0}')", usuarioLogin);
-
-                                /*ALTERTA*/
-                                 BLL.Alert_BLL.AlertasADD(oForm, DocNum, "202", "Actualizacion de Envasado", "Producción", "DT_0", "USER_CODE", "Orden de Fabricación", "Orden de Fabricacion", Texto, DocNumOF);
-
-                                if (Aprobacion_1 == "S")
-                                {
-                                    Texto += "➤ La muestra Nº 1 fue Aprobada " + "..";
-                                }
-                                else if (Aprobacion_1 == "N")
-                                {
-                                    Texto += "➤ La muestra Nº 1 fue Rechazado .. Mensaje : " + Mensaje_1 + "....";
-                                }
-                                else
-                                {
-                                    Texto += "➤ La muestra Nº 1 sin Actualizar ..";
-                                }
-
-                                if (Aprobacion_2 == "S")
-                                {
-                                    Texto += "➤ La muestra Nº 2 fue Aprobada" + "..";
-                                }
-                                else if (Aprobacion_2 == "N")
-                                {
-                                    Texto += "➤ La muestra Nº 2 fue Rechazado .. Mensaje : " + Mensaje_2 + "....";
-                                }
-                                else
-                                {
-                                    Texto += "➤ La muestra Nº 2 sin Actualizar ..";
-                                }
-
-                                if (Aprobacion_3 == "S")
-                                {
-                                    Texto += "➤ La muestra Nº 3 fue Aprobada" + "..";
-                                }
-                                else if (Aprobacion_3 == "N")
-                                {
-                                    Texto += "➤ La muestra Nº 3 fue Rechazado .. Mensaje : " + Mensaje_3 + "....";
-                                }
-                                else
-                                {
-                                    Texto += "➤ La muestra Nº 3 sin Actualizar ..";
-                                }
-
-                                string titulo = "";
-
-                                if (Aprobacion_1 == "S" && Aprobacion_2 == "S" && Aprobacion_3 == "S")
-                                {
-                                    titulo = "Aprobado";
-                                }
-                                else if (Aprobacion_1 == "N" && Aprobacion_2 == "N" && Aprobacion_3 == "N")
-                                {
-                                    titulo = "Rechazado";
-                                }
-                                else if(Aprobacion_1 == "N" || Aprobacion_2 == "N" || Aprobacion_3 == "N")
-                                {
-                                    titulo = "Observado";
-                                }
-                                else if(Aprobacion_1 == "S" || Aprobacion_2 == "S" || Aprobacion_3 == "S")
-                                {
-                                    titulo = "Liberado";
-                                }
-
-                                string NombreProd = oDT.GetString("ProdName", row);
-                                string ItemCodeProd = oDT.GetString("ItemCode", row);
-
-                                Recordset recordset3 = null;
-                                string QueryPesoOptimo = string.Format("CALL P_VIS_ADD_ENV_GET_PESO_OPTIMO('{0}','{1}')", ItemCodeProd, U_VIS_Density);
-                                recordset3 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                                recordset3.DoQuery(QueryPesoOptimo);
-                                string PesoOptimo = Convert.ToString(recordset3.Fields.Item("Peso Optimo").Value.ToString());
-
-                                Recordset recordset4 = null;
-                                string QueryPesoMaximo = string.Format("CALL P_VIS_ADD_ENV_GET_PESO_MAXIMO('{0}','{1}')", ItemCodeProd, PesoOptimo);
-                                recordset4 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                                recordset4.DoQuery(QueryPesoMaximo);
-                                string PesoMaximo = Convert.ToString(recordset4.Fields.Item("Peso Maximo").Value.ToString());
-
-
-
-                                OWOR_UPDATE_STATUS obj = MENSAJE_BLL.OWOR_UPDATE_STATUS(Convert.ToInt32(oDT.GetString("DocEntry", row)),
-                                      U_VIS_Sample1, U_VIS_Fecha_Entrega_M1, U_VIS_Hora_Entrega_M1, U_VIS_Fecha_Aproba_Lab,
-                                      U_VIS_Hora_Aproba_Lab, U_VIS_Density, Convert.ToDouble(PesoOptimo), Convert.ToDouble(PesoMaximo)
-                                   );
-                                string jsonData = JsonConvert.SerializeObject(obj);
-
-                                Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
-                                dynamic restResponse;
-                                restResponse = methods.PATCH("ProductionOrders", Convert.ToInt32(oDT.GetString("DocEntry", row)), jsonData);
-                                dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
-
-                                    /*CORREO*/
-                                    CorreoOutlook_BLL.EnviarCorreoOffice365(oForm, recordset2, DocNum,
-                                               "Producción", "DT_1", "DT_2", "DT_3", "",
-                                               titulo+" OF. Nº " + DocNumOF+" "+ Descripcion, "", NombreUserLogin, Texto, DocNumOF + " - " + Descripcion);
-                                    /*SMS*/
-                                   DAL.SMS.EnviarSMS();
-                                }
-                                else if (oDT.Rows.Count > 1)
+                            if (oDT.GetString("DocEntry", row)!= DocNum)
                             {
                                 string DocEntryOF = string.Empty;
                                 string DocNumOF1 = string.Empty;
 
-                                DocEntryOF = oDT.GetString("DocEntry",row);
-                                DocNumOF1 = oDT.GetString("DocNum",row);
+                                DocEntryOF = oDT.GetString("DocEntry", row);
+                                DocNumOF1 = oDT.GetString("DocNum", row);
                                 string NombreProd = oDT.GetString("ProdName", row);
                                 string ItemCodeProd = oDT.GetString("ItemCode", row);
                                 StrHANA = string.Format("CALL P_VIS_OBTENERDATOS_USER('{0}')", usuarioLogin);
 
-                                 Aprobacion_1 = oDT.GetString("U_VIS_Sample1", row);
-                                 Aprobacion_2 = oDT.GetString("U_VIS_Sample2", row);
-                                 Aprobacion_3 = oDT.GetString("U_VIS_Approved", row);
-                                 Mensaje_1 = oDT.GetString("U_VIS_Mensaje1", row);
-                                 Mensaje_2 = oDT.GetString("U_VIS_Mensaje2", row);
-                                 Mensaje_3 =oDT.GetString("U_VIS_Mensaje3", row);
-                                /*ALTERTA*/
-                                BLL.Alert_BLL.AlertasADD(oForm, DocEntryOF, "202", "Actualizacion de Envasado", "Producción", "DT_0", "USER_CODE", "Orden de Fabricación", "Orden de Fabricacion", Texto, DocNumOF1);
+                                Aprobacion_1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Sample1", 0);
+                                Aprobacion_2 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Sample2", 0);
+                                Aprobacion_3 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Approved", 0);
+                                Mensaje_1 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Mensaje1", 0); 
+                                Mensaje_2 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Mensaje2", 0);
+                                Mensaje_3 = oForm.DataSources.DBDataSources.Item("OWOR").GetValue("U_VIS_Mensaje3", 0); 
+
+
                                 if (Aprobacion_1 == "S")
                                 {
                                     Texto += "➤ La muestra Nº 1 fue Aprobada " + "..";
@@ -474,7 +369,8 @@ namespace Vistony.AddonName.Win.Asistentes
                                     titulo = "Liberado";
                                 }
                                 Recordset recordset3 = null;
-                                string QueryPesoOptimo =  string.Format("CALL P_VIS_ADD_ENV_GET_PESO_OPTIMO('{0}','{1}')", ItemCodeProd, U_VIS_Density);
+
+                                string QueryPesoOptimo = string.Format("CALL P_VIS_ADD_ENV_GET_PESO_OPTIMO('{0}','{1}')", ItemCodeProd, U_VIS_Density);
                                 recordset3 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
                                 recordset3.DoQuery(QueryPesoOptimo);
                                 string PesoOptimo = Convert.ToString(recordset3.Fields.Item("Peso Optimo").Value.ToString());
@@ -484,122 +380,145 @@ namespace Vistony.AddonName.Win.Asistentes
                                 recordset4 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
                                 recordset4.DoQuery(QueryPesoMaximo);
                                 string PesoMaximo = Convert.ToString(recordset4.Fields.Item("Peso Maximo").Value.ToString());
-                               
-
 
                                 OWOR_UPDATE_STATUS obj = MENSAJE_BLL.OWOR_UPDATE_STATUS(Convert.ToInt32(oDT.GetString("DocEntry", row)),
-                                      U_VIS_Sample1,U_VIS_Fecha_Entrega_M1,U_VIS_Hora_Entrega_M1 , U_VIS_Fecha_Aproba_Lab ,
-                                      U_VIS_Hora_Aproba_Lab ,U_VIS_Density,Convert.ToDouble(PesoOptimo),Convert.ToDouble(PesoMaximo)
-                                   );
+                                           U_VIS_Sample1, U_VIS_Fecha_Entrega_M1, U_VIS_Hora_Entrega_M1, U_VIS_Fecha_Aproba_Lab,
+                                           U_VIS_Hora_Aproba_Lab, U_VIS_Density, Convert.ToDouble(PesoOptimo), Convert.ToDouble(PesoMaximo)
+                                        );
                                 string jsonData = JsonConvert.SerializeObject(obj);
 
                                 Forxap.Framework.ServiceLayer.Methods methods = new Forxap.Framework.ServiceLayer.Methods();
-                                    dynamic restResponse;
-                                    restResponse = methods.PATCH("ProductionOrders", Convert.ToInt32(oDT.GetString("DocEntry", row)), jsonData);
-                                    dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
-
-                                    if (restResponse.StatusCode.ToString() == "" || restResponse.StatusCode.ToString() == "NoContent")
-                                    {
-                                    /*CORREO*/
-                                    CorreoOutlook_BLL.EnviarCorreoOffice365_ENV(oForm, recordset2, DocNum,
+                                dynamic restResponse;
+                                restResponse = methods.PATCH("ProductionOrders", Convert.ToInt32(oDT.GetString("DocEntry", row)), jsonData);
+                                dynamic json2 = JsonConvert.DeserializeObject(restResponse.Content.ToString());
+                                
+                                if (restResponse.StatusCode.ToString() == "" || restResponse.StatusCode.ToString() == "NoContent")
+                                {
+                                    //CORREO
+                                   CorreoOutlook_BLL.EnviarCorreoOffice365_ENV(oForm, recordset2, DocNum,
                                                                        "Producción", "DT_1", "DT_2", "DT_3", "",
-                                                                         titulo + " OF. Nº " + DocNumOF + " " + NombreProd, "", 
+                                                                         titulo + " OF. Nº " + DocNumOF + " " + NombreProd, "",
                                                                          NombreUserLogin, Texto, DocNumOF + " - " + NombreProd);
-                                    /*SMS*/
-                                      DAL.SMS.EnviarSMS();
+                                   // SMS
+                                   // DAL.SMS.EnviarSMS();
                                 }
-
                                 Texto = "";
+                                
                             }
+
                         }
 
-                      
+                        //Actualizar Liberaciones
+                        for (int row = 0; row < oDT.Rows.Count; row++)
+                        {
+                            string ItemCodeProd = oDT.GetString("ItemCode", row);
 
+                            Recordset recordset3 = null;
+                            string QueryPesoOptimo = string.Format("CALL P_VIS_ADD_ENV_GET_PESO_OPTIMO('{0}','{1}')", ItemCodeProd, U_VIS_Density);
+                            recordset3 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+                            recordset3.DoQuery(QueryPesoOptimo);
+                            string PesoOptimo = Convert.ToString(recordset3.Fields.Item("Peso Optimo").Value.ToString());
 
+                            Recordset recordset4 = null;
+                            string QueryPesoMaximo = string.Format("CALL P_VIS_ADD_ENV_GET_PESO_MAXIMO('{0}','{1}')", ItemCodeProd, PesoOptimo);
+                            recordset4 = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+                            recordset4.DoQuery(QueryPesoMaximo);
+                            string PesoMaximo = Convert.ToString(recordset4.Fields.Item("Peso Maximo").Value.ToString());
+
+                            OWOR_UPDATE_STATUS obj = MENSAJE_BLL.OWOR_UPDATE_STATUS(Convert.ToInt32(oDT.GetString("DocEntry", row)),
+                                                                   U_VIS_Sample1, U_VIS_Fecha_Entrega_M1, U_VIS_Hora_Entrega_M1, U_VIS_Fecha_Aproba_Lab,
+                                                                   U_VIS_Hora_Aproba_Lab, U_VIS_Density, Convert.ToDouble(PesoOptimo), Convert.ToDouble(PesoMaximo)
+                                                                );
+                        }
+                      }
                     }
-                }
-            }
+             }
 
-           }
+            }
+        }
+
 
         /// <summary>
         /// Initialize components. Called by framework after form created.
         /// </summary>
         public override void OnInitializeComponent()
-        {
-            this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_0").Specific));
-            this.Button0.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button0_ClickAfter);
-            this.OnCustomInitialize();
+         {
+             this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_0").Specific));
+             this.Button0.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button0_ClickAfter);
+             this.OnCustomInitialize();
 
-        }
+         }
 
-        /// <summary>
-        /// Initialize form event. Called by framework before form creation.
-        /// </summary>
-        public override void OnInitializeFormEvents()
-        {
-        }
+         /// <summary>
+         /// Initialize form event. Called by framework before form creation.
+         /// </summary>
+         public override void OnInitializeFormEvents()
+         {
+         }
 
-        private void OnCustomInitialize()
-        {
-            oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
-            int PosicionbotonLeft = oForm.GetButton("2").Item.Left;
-            int PosicionbotonTop = oForm.GetButton("2").Item.Top;
-            int WidthButton = oForm.GetButton("2").Item.Width;
-            int HeigthButton = oForm.GetButton("2").Item.Height;
+         private void OnCustomInitialize()
+         {
+             oForm = SAPbouiCOM.Framework.Application.SBO_Application.Forms.Item(this.UIAPIRawForm.UniqueID);
+             int PosicionbotonLeft = oForm.GetButton("2").Item.Left;
+             int PosicionbotonTop = oForm.GetButton("2").Item.Top;
+             int WidthButton = oForm.GetButton("2").Item.Width;
+             int HeigthButton = oForm.GetButton("2").Item.Height;
 
-            Button0.Item.Left = PosicionbotonLeft + 80;
-            Button0.Item.Top = PosicionbotonTop;
-            Button0.Item.Height = HeigthButton;
-        }
+             Button0.Item.Left = PosicionbotonLeft + 80;
+             Button0.Item.Top = PosicionbotonTop;
+             Button0.Item.Height = HeigthButton;
+         }
 
-        private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
-        {
-            recordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-            string DocNum = oForm.GetString("18").ToString();
-            ObtenerOT_Trasvase(oForm.GetString("18").ToString(), recordset);
-            ObtenerOP_Mezcla(OT_MEZCLA, recordset);
-            ObtenerTanqueOT(oForm.GetString("18"), recordset);
-            ObtenerVIS_OWOR_ENV(oForm.GetString("18"), recordset);
-            if (Code_VIS_OWOR_ENV == "0")
-            {
-                if (TypoListMaterial == "MZ")
-                {
-                    if (AprobCalidadOP == "S")
-                    {
-                        RegistroControlEnvasado registrocontrolenvasado = new RegistroControlEnvasado(oForm.GetString("18"), OT_MEZCLA, DocEntryOP, FechaApro_Lab,
-                                                                        AprobCalidadOP, "", HoraApro_Lab, DocEntryOT, TanqueOT, Correlativo, PesoOptimo,
-                                                                        MaximoOptimo, HoraAprobadaMuestraFinal, HoraEntrMuestraFinal, Hora_Entrega_Linea, Hora_Aprobada_Linea);
+         private void Button0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+         {
+             recordset = (Recordset)Sb1Globals.oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
+             string DocNum = oForm.GetString("18").ToString();
+             ObtenerOT_Trasvase(oForm.GetString("18").ToString(), recordset);
+             ObtenerOP_Mezcla(OT_MEZCLA, recordset);
+             ObtenerTanqueOT(oForm.GetString("18"), recordset);
+             ObtenerVIS_OWOR_ENV(oForm.GetString("18"), recordset);
 
-                        registrocontrolenvasado.Show();
-                    }
-                    else
-                    {
-                        Sb1Messages.ShowWarning("No aprobado por Laboratorio");
-                    }
+             if (Code_VIS_OWOR_ENV == "0")
+             {
+                 if (TypoListMaterial == "MZ")
+                 {
+                     if (AprobCalidadOP == "S")
+                     {
+                         RegistroControlEnvasado registrocontrolenvasado = new RegistroControlEnvasado(oForm.GetString("18"), OT_MEZCLA, DocEntryOP, FechaApro_Lab,
+                                                                         AprobCalidadOP, "", HoraApro_Lab, DocEntryOT, TanqueOT, Correlativo, PesoOptimo,
+                                                                         MaximoOptimo, HoraAprobadaMuestraFinal, HoraEntrMuestraFinal, 
+                                                                         Hora_Entrega_Linea, Hora_Aprobada_Linea);
 
-                }
-                else
-                {
-                    Sb1Messages.ShowWarning("La orden de fabricacion debe ser de tipo Envase");
-                }
+                         registrocontrolenvasado.Show();
+                     }
+                     else
+                     {
+                         Sb1Messages.ShowWarning("No aprobado por Laboratorio");
+                     }
 
-            }
-            else
-            {
-                var MessageBoxAler = Sb1Messages.ShowMessageBox(AddonMessageInfo.Message005);
+                 }
+                 else
+                 {
+                     Sb1Messages.ShowWarning("La orden de fabricacion debe ser de tipo Envase");
+                 }
+
+             }
+             else
+             {
+                 var MessageBoxAler = Sb1Messages.ShowMessageBox(AddonMessageInfo.Message005);
 
 
-                if (MessageBoxAler == 1)
-                {
+                 if (MessageBoxAler == 1)
+                 {
 
-                    ObtenerDocNum(recordset);
+                     ObtenerDocNum(recordset);
 
-                    RegistroControlEnvasado registrocontrolenvasado =
-                                        new RegistroControlEnvasado(oForm.GetString("18"), OT_MEZCLA, DocEntryOP, FechaApro_Lab,
-                                                        AprobCalidadOP, "", HoraApro_Lab, DocEntryOT, TanqueOT, Correlativo, PesoOptimo,
-                                                        MaximoOptimo, HoraAprobadaMuestraFinal, HoraEntrMuestraFinal, Hora_Entrega_Linea,
-                                                        Hora_Aprobada_Linea, "", "",/* U_VIS_NOM_REP, U_VIS_UND_MED,*/ U_VIS_ENV_P1, U_VIS_ETI_P1, U_VIS_ENC1_P1,
+                     RegistroControlEnvasado registrocontrolenvasado =
+                                         new RegistroControlEnvasado(oForm.GetString("18"), OT_MEZCLA, DocEntryOP, FechaApro_Lab,
+                                                         AprobCalidadOP, "", HoraApro_Lab, DocEntryOT, TanqueOT, Correlativo, PesoOptimo,
+                                                         MaximoOptimo, HoraAprobadaMuestraFinal, HoraEntrMuestraFinal, Hora_Entrega_Linea,
+                                                         Hora_Aprobada_Linea, "", "",/* U_VIS_NOM_REP, U_VIS_UND_MED,*/
+                            U_VIS_ENV_P1, U_VIS_ETI_P1, U_VIS_ENC1_P1,
                                                         U_VIS_ENC2_P1, U_VIS_OP1_P1, U_VIS_OP2_P1, U_VIS_MAR1_P1, U_VIS_MAR2_P1, U_VIS_FECHA_P1,
                                                         U_VIS_HORA_INI_P1, U_VIS_HORA_FIN_P1, U_VIS_PRES_P1, U_VIS_CANTIDAD_P1, U_VIS_COD_REG_BAL_P1,
                                                         U_VIS_PRE_LIMP1, U_VIS_PRE_LIMP2, U_VIS_PRE_LIMP3,
@@ -609,7 +528,7 @@ namespace Vistony.AddonName.Win.Asistentes
 
                                                         U_VIS_ENV_P3, U_VIS_ETI_P3, U_VIS_ENC1_P3,
                                                         U_VIS_ENC2_P3, U_VIS_OP1_P3, U_VIS_OP2_P3, U_VIS_MAR1_P3, U_VIS_MAR2_P3, U_VIS_FECHA_P3,
-                                                        U_VIS_HORA_INI_P3, U_VIS_HORA_FIN_P3, U_VIS_PRES_P3, U_VIS_CANTIDAD_P3, U_VIS_COD_REG_BAL_P3);
+                                                        U_VIS_HORA_INI_P3, U_VIS_HORA_FIN_P3,U_VIS_PRES_P3, U_VIS_CANTIDAD_P3, U_VIS_COD_REG_BAL_P3);
 
                     registrocontrolenvasado.Show();
                 }

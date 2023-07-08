@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Forxap\Forxap.Framework\Forxap.Framework.csproj">
+    <ProjectReference Include="..\Forxap.Framework\Forxap.Framework.csproj">
       <Project>{b4fcb577-e8ea-4c31-bab9-2747d6ed2cf7}</Project>
       <Name>Forxap.Framework</Name>
     </ProjectReference>
